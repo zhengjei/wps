@@ -4,33 +4,21 @@
 <script type="text/javascript" src="../js/util.js"></script>
 <script type="text/javascript" src="../js/dialog.js"></script>
 <script type="text/javascript" src="../.debugTemp/wpsjsrpcsdk.js"></script>
+
 <body>
     <div class="global">
-        <div class="divItem">
-            这是一个网页，按<span style="font-weight: bolder;">"F12"</span>可以打开调试器。
-        </div>
-        <div class="divItem">
-            这个示例展示了wps加载项的相关基础能力，与B/S业务系统的交互，请用浏览器打开：
-            <span style="font-weight: bolder;color: slateblue;" id="DemoSpan"></span>
-        </div>
-        <div class="divItem">开发文档: <span style="font-weight: bolder;color: slateblue;">https://open.wps.cn/docs/office</span></div>
-        <hr>
-        <div class="divItem">
-            <button style="margin:3px;" onclick="onbuttonclick('getDocName')">取文件名</button>
-            <button style="margin:3px;" onclick="onbuttonclick('createTaskPane')">创建任务窗格</button>
-            <button style="margin:3px;" onclick="onbuttonclick('newDoc')">新建文件</button>
-            <button style="margin:3px;" onclick="onbuttonclick('addString')">文档开头添加字符串</button>
-            <button style="margin:3px;" onclick="onbuttonclick('closeDoc')">关闭文件</button>
-        </div>
-        <hr>
-        <div class="divItem">文档文件名为：<span id="text_p"></span></div>
+       <p>企业ID:<input type="text"></p>
+       <p>用户名:<input type="text"></p>
+       <p>密码:<input type="password"></p>
+       <input type="submit" value="登录" />
+
     </div>
 </body>
 
 <style>
     .global{
         font-size: 15px;
-        min-height: 95%;
+        min-height: 400px;
     }
     .divItem{
         margin-left: 5px;
@@ -38,5 +26,17 @@
         font-size: 15px;
         word-wrap:break-word;
     }
+    .ewm-hx {
+        background: #fff;
+        z-index: 5;
+        position: fixed;
+        width: 8rem;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: none;
+    }
+
 </style>
 </html>

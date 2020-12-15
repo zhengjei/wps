@@ -46,7 +46,7 @@ function OnAction(control) {
             {
                 let tsId = wps.PluginStorage.getItem("taskpane_id")
                 if (!tsId) {
-                    let tskpane = wps.CreateTaskPane(GetUrlPath() + "/ui/taskpane.html")
+                    let tskpane = wps.CreateTaskPane(GetUrlPath() + "/ui/caidan.html")
                     let id = tskpane.ID
                     wps.PluginStorage.setItem("taskpane_id", id)
                     tskpane.Visible = true
