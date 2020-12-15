@@ -9,8 +9,8 @@ function OnAddinLoad(ribbonUI){
         wps.Enum = WPS_Enum
     }
 
-    wps.PluginStorage.setItem("EnableFlag", false) //往PluginStorage中设置一个标记，用于控制两个按钮的置灰
-    wps.PluginStorage.setItem("ApiEventFlag", false) //往PluginStorage中设置一个标记，用于控制ApiEvent的按钮label
+    wps.PluginStorage.setItem("EnableFlag", true) //往PluginStorage中设置一个标记，用于控制两个按钮的置灰
+    wps.PluginStorage.setItem("ApiEventFlag", true) //往PluginStorage中设置一个标记，用于控制ApiEvent的按钮label
     return true
 }
 
@@ -41,6 +41,7 @@ function OnAction(control) {
             }
         case "btnShowDialog":
             wps.ShowDialog(GetUrlPath() + "/ui/dialog.html", "这是一个对话框网页", 400 * window.devicePixelRatio, 400 * window.devicePixelRatio, false)
+
             break
         case "btnShowTaskPane":
             {
