@@ -45,11 +45,11 @@ function OnAction(control) {
             break
         case "btnShowTaskPane":
             {
-                let tsId = wps.PluginStorage.getItem("taskpane_id")
+                let tsId = wps.PluginStorage.getItem("taskpane_id1")
                 if (!tsId) {
                     let tskpane = wps.CreateTaskPane(GetUrlPath() + "/ui/caidan.html")
                     let id = tskpane.ID
-                    wps.PluginStorage.setItem("taskpane_id", id)
+                    wps.PluginStorage.setItem("taskpane_id1", id)
                     tskpane.Visible = true
                 } else {
                     let tskpane = wps.GetTaskPane(tsId)
@@ -57,6 +57,23 @@ function OnAction(control) {
                 }
             }
             break
+
+        case "btnShowTaskPane2":
+        {
+            let tsId2 = wps.PluginStorage.getItem("taskpane_id2")
+            if (!tsId2) {
+                let tskpane2 = wps.CreateTaskPane(GetUrlPath() + "/ui/taskpane.html")
+                let id2 = tskpane2.ID
+                wps.PluginStorage.setItem("taskpane_id2", id2)
+                tskpane.Visible = true
+            } else {
+                let tskpane2 = wps.GetTaskPane(tsId2)
+                tskpane2.Visible = !tskpane2.Visible
+            }
+        }
+            break
+
+
         case "btnApiEvent":
             {
                 let bFlag = wps.PluginStorage.getItem("ApiEventFlag")
