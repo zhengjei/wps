@@ -72,6 +72,17 @@ function OnAction(control) {
                 wps.ribbonUI.InvalidateControl("btnApiEvent") 
             }
             break
+
+        case "clear":{
+            let curSheet = wps.EtApplication().ActiveSheet;
+            if (curSheet){
+                curSheet.Cells.Clear();
+            }
+            break}
+
+
+
+
         case "btnWebNotify":
             {
                 let currentTime = new Date()
