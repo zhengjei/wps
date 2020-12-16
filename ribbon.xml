@@ -12,6 +12,7 @@
                     <button id="clear" label="清空所填内容"  onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
                     <button id="btnShowDialog" label="注销登录" onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
 
+                    <button id="table" label="预览" onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
 
 
 

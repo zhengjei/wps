@@ -39,10 +39,16 @@ function OnAction(control) {
                 //wps.ribbonUI.Invalidate(); 这行代码打开则是刷新所有的按钮状态
                 break
             }
+        case "table":
+            wps.ShowDialog(GetUrlPath() + "/ui/table.html", "这是一个对话框网页", 900 * window.devicePixelRatio, 600 * window.devicePixelRatio, false)
+
+            break;
+
         case "btnShowDialog":
             wps.ShowDialog(GetUrlPath() + "/ui/dialog.html", "这是一个对话框网页", 400 * window.devicePixelRatio, 400 * window.devicePixelRatio, false)
 
             break
+
         case "btnShowTaskPane":
             {
                 let tsId = wps.PluginStorage.getItem("taskpane_id1")

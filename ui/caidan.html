@@ -60,6 +60,10 @@
     </style>
 </head>
 <body>
+<select>
+    <option>字段</option>
+    <option>表</option>
+</select><input type="text" name="fname" /><button>搜索</button>
 <div class="warp">
     <ul id="container">
     </ul>
@@ -94,8 +98,8 @@
         {
             var ele=document.createElement('li');
             if(!json[attr])
-               // ele.innerHTML=' <input type="checkbox"></input>'+attr;
-                ele.innerHTML=attr;
+               ele.innerHTML=' <input type="checkbox"></input>'+attr;
+                // ele.innerHTML=attr;
 
 
             else
