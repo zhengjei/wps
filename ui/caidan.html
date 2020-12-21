@@ -61,8 +61,8 @@
 </head>
 <body>
 <select>
-    <option>字段</option>
-    <option>表</option>
+    <option>列名</option>
+    <option>表名</option>
 </select><input type="text" name="fname" /><button>搜索</button>
 <div class="warp">
     <ul id="container">
@@ -72,7 +72,7 @@
 
 <script type="text/javascript">
 
-    //结构
+    // 结构
     var json={
         '我的工作空间':{
             '我的数据集':{
@@ -82,7 +82,6 @@
                            },
                 '销售数据_本地':{
                     '年':null,
-                    '客户名称':null,
                     '销售员':null,
                     '数量':null
                                 },
@@ -90,6 +89,7 @@
         },};
 
 
+// console.log(json);
 
     //这里生成DOM
     function generate(json,par)
@@ -159,7 +159,7 @@
      */
 </script>
 
-
+<!--<script type="text/javascript" src="../js/apiJson.js"></script>-->
 
 </body>
 </html>

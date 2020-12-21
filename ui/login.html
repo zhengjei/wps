@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="../js/bootstrap-4.5.0-dist/css/bootstrap.min.css"  rel="stylesheet">
+<!--    <link href="../js/bootstrap-4.5.0-dist/css/calendar-price-jquery.min.css" rel="stylesheet">-->
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="/js/jquery.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="../js/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+<!--    <script src="/js/vue.js"></script>-->
+<!--    <script src="/js/calendar-price-jquery.min.js"></script>-->
+    <style type="text/css">
+        /*body {*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*    font-family: sans-serif;*/
+        /*    background: url(/images/preview.jpg) no-repeat center 0px;*/
+        /*    background-size: cover;*/
+
+
+        /*    background-position: center 0;*/
+        /*    background-repeat: no-repeat;*/
+        /*    background-attachment: fixed;*/
+        /*    -webkit-background-size: cover;*/
+        /*    -o-background-size: cover;*/
+        /*    -moz-background-size: cover;*/
+        /*    -ms-background-size: cover;*/
+
+        /*}*/
+        body {
+
+            background-image: url(../images/bg.jpg);
+
+            background-position: center 0;
+
+            background-repeat: no-repeat;
+
+            background-attachment: fixed;
+
+            background-size: cover;
+
+            -webkit-background-size: cover;
+
+            -o-background-size: cover;
+
+            -moz-background-size: cover;
+
+            -ms-background-size: cover;
+
+        }
+        .mycss{
+            position: absolute;
+            left: 0px;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: 200px;
+            width: 300px;
+
+        }
+        /*#div1{*/
+        /*    width: 300px;*/
+        /*    height: 300px;*/
+        /*    background: #ccc;*/
+        /*    margin:  0 auto;*/
+        /*    position: absolute;!*给大div一个绝对定位*!*/
+        /*    top: 50%;*/
+        /*    left: 50%;*/
+        /*    margin-top: -150px;!*往上移动自身高度的一半*!*/
+        /*    margin-left: -150px;!*往左移动自身宽度的一半*!*/
+        /*}*/
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="mycss">
+        <form class="form-signin">
+            <h2 class="form-signin-heading" align="center">登录</h2>
+
+            <input type="email" id="inputEmail" class="form-control" placeholder="账号" required autofocus>
+            <br>
+            <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+            <div class="checkbox">
+                <a href="/retrievePaw" style="color: White;float:left">忘记密码</a>
+                <a href="/register" style="color: White;float:right">立即注册</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+
+</html>
