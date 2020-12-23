@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <script src="../js/layui/layui.js"></script>
 </head>
 <body>
 <input type="date">到<input type="date">
@@ -11,17 +13,31 @@
 <input><button>搜索</button>
 <br>
 <br>
-<table border="1">
+<table class="layui-table">
+    <colgroup>
+        <col width="150">
+        <col width="200">
+        <col>
+    </colgroup>
+    <thead>
     <tr>
-        <th>安全库存</th>
-        <th>入库单价</th>
         <th>年</th>
+        <th>销售员</th>
+        <th>数量</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>2019</td>
+        <td>张三</td>
+        <td>1000</td>
     </tr>
     <tr>
-        <td>400</td>
-        <td>500</td>
-        <td>600</td>
+        <td>2020</td>
+        <td>李四</td>
+        <td>1000</td>
     </tr>
+    </tbody>
 </table>
 </body>
 </html>
