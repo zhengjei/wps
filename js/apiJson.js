@@ -6,8 +6,7 @@ function apiJson() {
         url: "https://api.apishop.net/common/joke/getJokesByRandom?apiKey=Xn8TqB9a2294f6a36e4716726bce47baf9df0815204776e&pageSize=20",
         dataType: "json",
         success: function(data) {
-            return data;
-           /* var list = "";
+            var list = "";
             result = data.result;
             var keys = Object.keys(result[0])
             for (var i = 0; i < keys.length; i++) {
@@ -16,7 +15,7 @@ function apiJson() {
                     '<li><button style="margin:3px;" class="b1" value="'+key+'">'+key+'</button></li>'
                     // '<li><button style="margin:3px;" id="b1" onclick="f('+key+')">'+key+'</button></li>'
             }
-                document.getElementById('ol').innerHTML = list;*/
+                document.getElementById('ol').innerHTML = list;
         }
     });
    
