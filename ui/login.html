@@ -11,7 +11,10 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.16.0/js/md5.min.js"></script>
     <script src="../js/jquery.md5.js"></script>
     <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/ribbon.js"></script>
+    <script src="../js/util.js"></script>
     <style type="text/css">
+
 
         body {
 
@@ -48,6 +51,7 @@
     </style>
 
 
+
 </head>
 
 <body>
@@ -81,6 +85,9 @@
                         var token = result.token;
                         alert("登录成功");
                         $.cookie("token",token);
+                        LoginSuccess();
+                        station();
+
                         window.opener=null;window.open('','_self');window.close();
                         return;
                     }

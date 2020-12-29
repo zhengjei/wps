@@ -5,12 +5,25 @@
     <title>Title</title>
     <link rel="stylesheet" href="../js/layui/css/layui.css">
     <script src="../js/layui/layui.js"></script>
+    <script src="../js/ribbon.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/util.js"></script>
 </head>
 <body>
 <input type="date">到<input type="date">
 <br>
 <br>
-<input><button>搜索</button>
+<input><button onclick="LoginSuccess()">搜索2</button>
+<script>
+    $.removeCookie("token");
+    var sas=document.cookie;
+    //alert(sas);
+    //LoginSuccess();
+    station();
+</script>
+
+
 <br>
 <br>
 <table class="layui-table">

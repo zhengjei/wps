@@ -9,8 +9,8 @@ function OnAddinLoad(ribbonUI){
         wps.Enum = WPS_Enum
     }
 
-    wps.PluginStorage.setItem("EnableFlag", true) //往PluginStorage中设置一个标记，用于控制两个按钮的置灰
-    wps.PluginStorage.setItem("ApiEventFlag", true) //往PluginStorage中设置一个标记，用于控制ApiEvent的按钮label
+    wps.PluginStorage.setItem("EnableFlag", false) //往PluginStorage中设置一个标记，用于控制两个按钮的置灰
+    wps.PluginStorage.setItem("ApiEventFlag", false) //往PluginStorage中设置一个标记，用于控制ApiEvent的按钮label
     return true
 }
 
@@ -34,9 +34,13 @@ function OnAction(control) {
                 
                 //通知wps刷新以下几个按饰的状态
                 wps.ribbonUI.InvalidateControl("btnIsEnbable")
-                wps.ribbonUI.InvalidateControl("btnShowDialog") 
-                wps.ribbonUI.InvalidateControl("btnShowTaskPane") 
-                //wps.ribbonUI.Invalidate(); 这行代码打开则是刷新所有的按钮状态
+                wps.ribbonUI.InvalidateControl("btnShowDialog2")
+
+
+                wps.ribbonUI.InvalidateControl("btnShowTaskPane")
+                wps.ribbonUI.InvalidateControl("btnShowTaskPane2")
+                wps.ribbonUI.InvalidateControl("clear")
+                //wps.ribbonUI.Invalidate(); //这行代码打开则是刷新所有的按钮状态
                 break
             }
         case "table":
@@ -142,8 +146,8 @@ function OnGetEnabled(control) {
             break
         case "btnShowDialog":
             {
-                let bFlag = wps.PluginStorage.getItem("EnableFlag")
-                return bFlag
+                //let bFlag = wps.PluginStorage.getItem("EnableFlag")
+               // return bFlag
                 break
             }
         case "btnShowTaskPane":
@@ -152,6 +156,28 @@ function OnGetEnabled(control) {
                 return bFlag
                 break
             }
+
+            /////////////////////////////////////
+        case "btnShowTaskPane2":
+        {
+            let bFlag = wps.PluginStorage.getItem("EnableFlag")
+            return bFlag
+            break
+        }
+        case "clear":
+        {
+            let bFlag = wps.PluginStorage.getItem("EnableFlag")
+            return bFlag
+            break
+        }
+        case "btnShowDialog2":
+        {
+            let bFlag = wps.PluginStorage.getItem("EnableFlag")
+            return bFlag
+            break
+        }
+
+
         default:
             break
     }
@@ -183,4 +209,48 @@ function OnGetLabel(control){
 
 function OnNewDocumentApiEvent(doc){
     alert("新建文件事件响应，取文件名: " + doc.Name)
+}
+
+function LoginSuccess() {
+    var token=$.cookie("token");
+    //var token=3;
+
+    if (token!=null){
+        //alert("开");
+        let bOpen=0;
+        wps.PluginStorage.setItem("EnableFlag", !bOpen);
+        wps.ribbonUI.InvalidateControl("btnShowDialog2");
+        wps.ribbonUI.InvalidateControl("btnShowTaskPane");
+        wps.ribbonUI.InvalidateControl("btnIsEnbable");
+        wps.ribbonUI.InvalidateControl("clear");
+        wps.ribbonUI.InvalidateControl("btnShowTaskPane2");
+
+    }
+    else {
+        //alert("关了哟");
+        let bClose=-1;
+        wps.PluginStorage.setItem("EnableFlag", !bClose);
+        //wps.ribbonUI.InvalidateControl("btnShowDialog");
+        wps.ribbonUI.InvalidateControl("btnShowTaskPane");
+        wps.ribbonUI.InvalidateControl("btnIsEnbable");
+        wps.ribbonUI.InvalidateControl("clear");
+        wps.ribbonUI.InvalidateControl("btnShowTaskPane2");
+
+    }
+}
+
+
+function station() {
+    let tsId3 = wps.PluginStorage.getItem("taskpane_id3")
+    if (!tsId3) {
+        let tskpane3 = wps.CreateTaskPane(GetUrlPath() + "/caidan.html")
+        let id3 = tskpane3.ID
+        wps.PluginStorage.setItem("taskpane_id3", id3)
+        tskpane3.Visible = true
+    } else {
+        let tskpane3 = wps.GetTaskPane(tsId3)
+        tskpane3.Visible = !tskpane3.Visible
+    }
+    //alert(tsId3);
+    //alert(!tsId3);
 }
