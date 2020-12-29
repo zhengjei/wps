@@ -40,6 +40,7 @@ function OnAction(control) {
                 wps.ribbonUI.InvalidateControl("btnShowTaskPane")
                 wps.ribbonUI.InvalidateControl("btnShowTaskPane2")
                 wps.ribbonUI.InvalidateControl("clear")
+                wps.ribbonUI.InvalidateControl("table")
                 //wps.ribbonUI.Invalidate(); //这行代码打开则是刷新所有的按钮状态
                 break
             }
@@ -51,8 +52,22 @@ function OnAction(control) {
         case "btnShowDialog":
             wps.ShowDialog(GetUrlPath() + "/ui/login.html", "这是一个登录框网页", 900 * window.devicePixelRatio, 600 * window.devicePixelRatio, false)
 
-            break
+            break;
 
+        case "cancellation":
+            $.removeCookie("token");
+            alert("注销成功");
+            var a = -1
+            wps.PluginStorage.setItem("EnableFlag", !a)
+            //通知wps刷新以下几个按饰的状态
+            wps.ribbonUI.InvalidateControl("btnIsEnbable")
+            wps.ribbonUI.InvalidateControl("btnShowDialog2")
+
+
+            wps.ribbonUI.InvalidateControl("btnShowTaskPane")
+            wps.ribbonUI.InvalidateControl("btnShowTaskPane2")
+            wps.ribbonUI.InvalidateControl("clear")
+            break;
         case "btnShowTaskPane":
             {
                 let tsId = wps.PluginStorage.getItem("taskpane_id1")
