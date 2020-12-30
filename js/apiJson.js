@@ -1,4 +1,5 @@
 function apiJson() {
+    
    result="";
     $.ajax({
         async:false,
@@ -37,3 +38,4 @@ function f(key) {
 
     }
 }
+

@@ -45,6 +45,7 @@ function OnAction(control) {
                 break
             }
         case "table":
+
             wps.ShowDialog(GetUrlPath() + "/ui/table.html", "这是一个对话框网页", 900 * window.devicePixelRatio, 600 * window.devicePixelRatio, false)
 
             break;
@@ -55,7 +56,7 @@ function OnAction(control) {
             break;
 
         case "cancellation":
-            $.removeCookie("token");
+           $.cookie("token",null)
             alert("注销成功");
             var a = -1
             wps.PluginStorage.setItem("EnableFlag", !a)

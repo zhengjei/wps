@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,42 +15,71 @@
 <br>
 <br>
 <input><button onclick="LoginSuccess()">搜索2</button>
+<table id="demo"  lay-data="{id: 'idTest'}" lay-filter="test"></table>
+<div style="text-align: center;">
+<div class="layui-btn-group demoTable">
+    <button class="layui-btn" data-type="getCheckData">插入选中行数据</button>
+    <button class="layui-btn" data-type="getCheckLength">插入所有数据</button>
+</div>
+</div>
 <script>
-    $.removeCookie("token");
-    var sas=document.cookie;
-    //alert(sas);
-    //LoginSuccess();
-    station();
+    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHUERJIiwiZXhwIjoxNjA5MzIyODY2LCJpYXQiOjE2MDkzMTU2NjYsInVzZXJuYW1lIjoiY2xvdWQifQ.-o9aWEGtdA0rJpalLuUafYpeqw36OYqHjdFU87_Y5gs";
+    var apiId = "baXXX";
+    layui.use('table', function(){
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#demo'
+            ,url: "http://139.9.83.195/api/dpass/openApi/getApiData?token="+token+"&apiId="+apiId+"" //数据接口
+            ,totalRow: true //开启合计行
+            ,parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": (res.code===200)?0:res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.result.length, //解析数据长度
+                    "data": res.result //解析数据列表
+                };
+            }
+            ,cols: [[ //表头
+                {type: 'checkbox', fixed: 'left'}
+                ,{field: 'product', title: 'ID',  sort: true, fixed: 'left'}
+                ,{field: 'amount', title: '用户名'}
+                ,{field: 'customer', title: '性别', sort: true}
+            ]]
+        });
+
+            //监听表格复选框选择
+            table.on('checkbox(demo)', function(obj){
+                console.log(obj)
+            });
+
+        var $ = layui.$, active = {
+            getCheckData: function(){ //获取选中数据
+                var checkStatus = table.checkStatus('idTest')
+                    ,data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+            }
+            ,getCheckLength: function(){ //获取选中数目
+                var checkStatus = table.checkStatus('idTest')
+                    ,data = checkStatus.data;
+                layer.msg('选中了：'+ data.length + ' 个');
+            }
+        };
+
+        $('.demoTable .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    });
+
+
 </script>
-
-
-<br>
-<br>
-<table class="layui-table">
-    <colgroup>
-        <col width="150">
-        <col width="200">
-        <col>
-    </colgroup>
-    <thead>
-    <tr>
-        <th >年</th>
-        <th>销售员</th>
-        <th>数量</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>2019</td>
-        <td>张三</td>
-        <td>1000</td>
-    </tr>
-    <tr>
-        <td>2020</td>
-        <td>李四</td>
-        <td>1000</td>
-    </tr>
-    </tbody>
-</table>
 </body>
+<!--<script>
+    $(function() {
+        var token = $.cookie("token");
+        alert(token)
+    })
+</script>-->
 </html>
