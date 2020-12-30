@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取数据</title>
+    <script src="../../js/jquery.js"></script>
+
+
+</head>
+<body>
+<script type="text/javascript">
+    $.ajax({
+        type: "GET",
+        url:"http://139.9.83.195/api/dpass/openApi/getApiList?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHUERJIiwiZXhwIjoxNjA5MjMwMTc2LCJpYXQiOjE2MDkyMjI5NzYsInVzZXJuYW1lIjoiY2xvdWQifQ.dVTCh54y29LCzMGmUZDnZnM2GdlZv-oQmZQ90jo4rH8",
+        success: function (data) {
+            var result = data.result;
+            for (var i=0;i<result.length;i++){
+                var name=result[i].name;
+                alert(name);
+                console.log(name);
+            }
+        }
+    })
+</script>
+
+
+
+</body>
+</html>
