@@ -20,6 +20,9 @@
 </body>
 <script type="text/javascript">
     var data1="["+JSON.stringify(gzkj())+"]";
+    //var data1="["+JSON.stringify(saed())+"]";
+    console.log("这里+"+JSON.stringify(gzkj()));
+    //var data1="[{title: '江西','zz':'dd',children:[{title: '南昌'}]}]";
 
     $(function() {
         layui.use(['tree', 'util'], function() {
@@ -40,6 +43,10 @@
                 ,isJump: true //是否允许点击节点时弹出新窗口跳转
                 ,click: function(obj){
                     var data = obj.data;  //获取当前点击的节点数据
+
+                    //  window.open("login.html");
+                    //  此处可添加 事件，，如 插入数据啥的
+
                     layer.msg('状态：'+ obj.state + '<br>节点数据：' + JSON.stringify(data));
                 }
             });

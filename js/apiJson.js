@@ -6,6 +6,7 @@ function apiJson() {
         type: "GET",
         url: "https://api.apishop.net/common/joke/getJokesByRandom?apiKey=Xn8TqB9a2294f6a36e4716726bce47baf9df0815204776e&pageSize=20",
         dataType: "json",
+
         success: function(data) {
             var list = "";
             result = data.result;

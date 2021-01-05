@@ -1,8 +1,8 @@
 function Table_Name_Way() {  //  获取表名
     //var token=$.cookie("token");
-    var token_local="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJH" +
-        "UERJIiwiZXhwIjoxNjA5MzE3MzE2LCJpYXQiOjE2MDkzMTAxMTYsInVzZXJuYW1lI" +
-        "joiY2xvdWQifQ.lgXc17HXexUEsZLSJ8HsCqEaybGVQy5OL8ziB155rrU";
+    var token_local="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ" +
+        "HUERJIiwiZXhwIjoxNjA5NzU2MzUwLCJpYXQiOjE2MDk3NDkxNTAsInVzZXJuYW" +
+        "1lIjoiY2xvdWQifQ.vign611LHM-6ip8uEIUTzbcPc6sR1ii-xi4f_RSNcnM";
     var url_local="http://139.9.83.195/api/dpass/openApi/getApiList?";
 
     var table_local= new Map();
@@ -23,15 +23,28 @@ function Table_Name_Way() {  //  获取表名
 
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
+
+
+function zhuanhuan(map) {
+    let obj= Object.create(null);
+    for (let[k,v] of map) {
+        obj[k] = v;
+    }
+//object转json
+    var d=JSON.stringify(obj);   //  此时 为一长串 字符串
+    var e=eval('(' + d + ')');   //  转为  对象 形式
+    return e;
+}
+
 /////////////////////////////////////////////////////////////////
 
 
 function Col_Name_Way() {   //  获取每个表 对应 的  列名
     var table_name_map = Table_Name_Way();
     var col_name = new Map();
-    var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHUERJIiwi" +
-        "ZXhwIjoxNjA5MzE3MzE2LCJpYXQiOjE2MDkzMTAxMTYsInVzZXJuYW1lIjoiY2xvdW" +
-        "QifQ.lgXc17HXexUEsZLSJ8HsCqEaybGVQy5OL8ziB155rrU";
+    var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHUER" +
+        "JIiwiZXhwIjoxNjA5NzU2MzUwLCJpYXQiOjE2MDk3NDkxNTAsInVzZXJuYW1l" +
+        "IjoiY2xvdWQifQ.vign611LHM-6ip8uEIUTzbcPc6sR1ii-xi4f_RSNcnM";
     var url="http://139.9.83.195/api/dpass/openApi/getApiMetadata?";
 
 
@@ -49,11 +62,20 @@ function Col_Name_Way() {   //  获取每个表 对应 的  列名
     let mi=new Map();
     for( let key in table_name_json){  //  构建 外层 Map
         //  准备 构建 内层 数组
+
+        /*
+        aaajskjakjjk  */
+
+
         let mi_id=table_name_map.get(key);
+
         let mi_col=new Array();  //  构建 数组  存储  列名
+
+        mi_col.push(mi_id);
+        alert(mi_id)
         $.ajax({
             type: "GET",
-            url:url+"token="+token+"&apiId="+mi_id,
+            url:url+"token="+token+"&apiId="+"销售数据",
             success: function (data) {
                 var result = data.result;
                 for (var i=0;i<result.length;i++){
@@ -61,22 +83,12 @@ function Col_Name_Way() {   //  获取每个表 对应 的  列名
                 }
             }
         })
+
         mi.set(mi_id,mi_col);  //  存为 map
     }
     return mi;
 }
 
-
-function zhuanhuan(map) {
-    let obj= Object.create(null);
-    for (let[k,v] of map) {
-        obj[k] = v;
-    }
-//object转json
-    var d=JSON.stringify(obj);   //  此时 为一长串 字符串
-    var e=eval('(' + d + ')');   //  转为  对象 形式
-    return e;
-}
 
 
 
@@ -85,6 +97,11 @@ function zhuanhuan(map) {
 //////////////////////////////////////////////////////////
 
 function gzkj() {
+    var test=new Map();
+    test.set("baXXX","销售数据");
+    test.set("baYYY","出库数据");
+    test.set("baZZZ","入库数据");
+
     var a=["客户","商品","数量"];
     var c=new Map();
     c.set("销售数据",a);
@@ -101,7 +118,17 @@ function gzkj() {
     for (let biao in e){
         var children1=new Map();
 
+        var B_Id=zhuanhuan(test);
         children1.set("title",biao);
+        //children1.set("as","测试");
+
+        for (let B_id_b in B_Id){
+            if (test.get(B_id_b) == biao){
+                children1.set("B_Id",B_id_b);
+            }
+        }
+
+
 
         var ta1=c.get(biao);
 
@@ -116,6 +143,7 @@ function gzkj() {
             children2.push(child22);
         }
         children1.set("children",children2);
+        //children1.set("as","测试");
         var children11=zhuanhuan(children1);
         child1.push(children11);
 
@@ -126,6 +154,7 @@ function gzkj() {
 
     var kz=new Map();
     kz.set("title","工作空间");
+    //kz.set("as","测试");
     kz.set("children",child1);
 
     var kz2=zhuanhuan(kz);
@@ -134,11 +163,38 @@ function gzkj() {
     return kz2;
 }
 
-var sad=JSON.stringify(gzkj());
-console.log(sad);
+//var sad=JSON.stringify(gzkj());
+//console.log(sad);
 
+var a=new Map();
+a.set("a",1);
+a.set("b",2);
+var c=zhuanhuan(a);
+//var b=a.keys();
+//console.log(c);
+for (let d in c){
+    if (a.get(d) == 1){
+       // console.log(d);
+    }
 
+}
 
+var test=new Map();
+test.set("baXXX","销售数据");
+test.set("baYYY","出库数据");
+test.set("baZZZ","入库数据");
+test=zhuanhuan(test);
+//console.log(test);
+
+function saed() {
+    var test=new Map();
+    test.set("baXXX","销售数据");
+    test.set("baYYY","出库数据");
+    test.set("baZZZ","入库数据");
+    test=zhuanhuan(test);
+    return test;
+}
+//console.log(saed());
 
 
 
