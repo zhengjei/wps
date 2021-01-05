@@ -1,8 +1,8 @@
 function Table_Name_Way() {  //  获取表名
     //var token=$.cookie("token");
     var token_local="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ" +
-        "HUERJIiwiZXhwIjoxNjA5NzU2MzUwLCJpYXQiOjE2MDk3NDkxNTAsInVzZXJuYW" +
-        "1lIjoiY2xvdWQifQ.vign611LHM-6ip8uEIUTzbcPc6sR1ii-xi4f_RSNcnM";
+        "HUERJIiwiZXhwIjoxNjA5ODQwMDQ1LCJpYXQiOjE2MDk4MzI4NDUsInVzZXJuY" +
+        "W1lIjoiY2xvdWQifQ.Nx3VZmyWPu3qRaymp6cH8IqYxS1zwrv-TcutH7qfcZ4";
     var url_local="http://139.9.83.195/api/dpass/openApi/getApiList?";
 
     var table_local= new Map();
@@ -42,9 +42,10 @@ function zhuanhuan(map) {
 function Col_Name_Way() {   //  获取每个表 对应 的  列名
     var table_name_map = Table_Name_Way();
     var col_name = new Map();
-    var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHUER" +
-        "JIiwiZXhwIjoxNjA5NzU2MzUwLCJpYXQiOjE2MDk3NDkxNTAsInVzZXJuYW1l" +
-        "IjoiY2xvdWQifQ.vign611LHM-6ip8uEIUTzbcPc6sR1ii-xi4f_RSNcnM";
+    //var token=$.cookie("token");
+    var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHUE" +
+        "RJIiwiZXhwIjoxNjA5ODQwMDQ1LCJpYXQiOjE2MDk4MzI4NDUsInVzZXJ" +
+        "uYW1lIjoiY2xvdWQifQ.Nx3VZmyWPu3qRaymp6cH8IqYxS1zwrv-TcutH7qfcZ4";
     var url="http://139.9.83.195/api/dpass/openApi/getApiMetadata?";
 
 
@@ -71,10 +72,11 @@ function Col_Name_Way() {   //  获取每个表 对应 的  列名
 
         let mi_col=new Array();  //  构建 数组  存储  列名
 
-        mi_col.push(mi_id);
-        alert(mi_id)
+        //mi_col.push(mi_id);
+        //alert(mi_id)
         $.ajax({
             type: "GET",
+            async:false,
             url:url+"token="+token+"&apiId="+"销售数据",
             success: function (data) {
                 var result = data.result;
@@ -107,6 +109,10 @@ function gzkj() {
     c.set("销售数据",a);
     c.set("出库数据",a);
     c.set("入库数据",a);
+
+     var c=Col_Name_Way();
+
+
 //console.log(c);  // c  代表 表——》列  ；Map 形式
 
 ////////////////////////////////////  此段将 Map  转为  json 对象
@@ -187,12 +193,12 @@ test=zhuanhuan(test);
 //console.log(test);
 
 function saed() {
-    var test=new Map();
-    test.set("baXXX","销售数据");
-    test.set("baYYY","出库数据");
-    test.set("baZZZ","入库数据");
-    test=zhuanhuan(test);
-    return test;
+    var a=["客户","商品","数量"];
+    var c=new Map();
+    c.set("销售数据",a);
+    c.set("出库数据",a);
+    c.set("入库数据",a);
+    return c;
 }
 //console.log(saed());
 
