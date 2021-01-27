@@ -23,17 +23,19 @@
 </div>
 </div>
 <script>
-    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHUERJIiwiZXhwIjoxNjA5MzIyODY2LCJpYXQiOjE2MDkzMTU2NjYsInVzZXJuYW1lIjoiY2xvdWQifQ.-o9aWEGtdA0rJpalLuUafYpeqw36OYqHjdFU87_Y5gs";
+
+    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHUERJIiwiZXhwIjoxNjEwMDgxMjY4LCJpYXQiOjE2MTAwNzQwNjgsInVzZXJuYW1lIjoiY2xvdWQifQ.hEUUZ_QeUdIKMMQa7JGkibwGxLUzXqAxGdWQvxYd5UI";
     var apiId = "baXXX";
     layui.use('table', function(){
         var table = layui.table;
-
         //第一个实例
         table.render({
             elem: '#demo'
-            ,url: "http://139.9.83.195/api/dpass/openApi/getApiData?token="+token+"&apiId="+apiId+"" //数据接口
+            ,url: "http://139.9.83.195/api/dpass/openApi/getApiData?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJHUERJIiwiZXhwIjoxNjEwMDgxMjY4LCJpYXQiOjE2MTAwNzQwNjgsInVzZXJuYW1lIjoiY2xvdWQifQ.hEUUZ_QeUdIKMMQa7JGkibwGxLUzXqAxGdWQvxYd5UI&apiId=baXXX" //数据接口
+            //,url:"www.baidu.com"
             ,totalRow: true //开启合计行
             ,parseData: function(res){ //res 即为原始返回的数据
+                console.log(res)
                 return {
                     "code": (res.code===200)?0:res.code, //解析接口状态
                     "msg": res.msg, //解析提示文本
@@ -43,9 +45,9 @@
             }
             ,cols: [[ //表头
                 {type: 'checkbox', fixed: 'left'}
-                ,{field: 'product', title: 'ID',  sort: true, fixed: 'left'}
-                ,{field: 'amount', title: '用户名'}
-                ,{field: 'customer', title: '性别', sort: true}
+                ,{field: 'product', title: 'product',  sort: true, fixed: 'left'}
+                ,{field: 'amount', title: 'amount'}
+                ,{field: 'customer', title: 'customer', sort: true}
             ]]
         });
 

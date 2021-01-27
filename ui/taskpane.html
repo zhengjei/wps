@@ -9,21 +9,24 @@
 <script src="../js/jquery.cookie.js"></script>
 <script src="../js/layui/layui.js"></script>
     <script src="../Cpractice/JSpractice/APIdata.js"></script>
+    <script type="text/javascript" src="../js/screen.js"></script>
 </head>
 <body>
 <div class="layui-btn-container">
-    <button type="button" class="layui-btn layui-btn-sm" lay-demo="getChecked">获取选中节点数据</button>
+<!--    <button type="button" class="layui-btn layui-btn-sm" lay-demo="getChecked">获取选中节点数据</button>
     <button type="button" class="layui-btn layui-btn-sm" lay-demo="setChecked">勾选指定节点</button>
-    <button type="button" class="layui-btn layui-btn-sm" lay-demo="reload">重载实例</button>
+    <button type="button" class="layui-btn layui-btn-sm" lay-demo="reload">重载实例</button>-->
+    <button type="button" class="layui-btn layui-btn-sm" lay-demo="screen">筛选</button>
 </div>
 <div id="test12" class="demo-tree-more"></div>
 </body>
 <script type="text/javascript">
-    var data1="["+JSON.stringify(gzkj())+"]";
+    //var data1="["+JSON.stringify(gzkj())+"]";
+    var data1=JSON.stringify(gzkj());
     //var data1="["+JSON.stringify(saed())+"]";
     console.log("这里+"+JSON.stringify(gzkj()));
     //var data1="[{title: '江西','zz':'dd',children:[{title: '南昌'}]}]";
-
+    //var data1="[{title: '表名1',apiid:'baYYY'},children:[{title: '字段名1'},{title: '字段名1'}]]},{title: '表名2',apiid:'baXXX'},children:[{title: '字段名1'},{title: '字段名1'}]]";
     $(function() {
         layui.use(['tree', 'util'], function() {
             var tree = layui.tree
@@ -43,31 +46,33 @@
                 ,isJump: true //是否允许点击节点时弹出新窗口跳转
                 ,click: function(obj){
                     var data = obj.data;  //获取当前点击的节点数据
-
                     //  window.open("login.html");
                     //  此处可添加 事件，，如 插入数据啥的
-
                     layer.msg('状态：'+ obj.state + '<br>节点数据：' + JSON.stringify(data));
                 }
             });
             //按钮事件
             util.event('lay-demo', {
                 getChecked: function(othis){
-                    var checkedData = tree.getChecked('demoId1'); //获取选中节点的数据
-
+                    /*var checkedData = tree.getChecked('demoId1'); //获取选中节点的数据
                     layer.alert(JSON.stringify(checkedData), {shade:0});
+                    console.log(checkedData);*/
+                },
+                screen:function () {
+                    //var checkedData = new Map();
+                    //checkedData.set("checkedData", checkedData = tree.getChecked('demoId1'));
+                    var checkedData = tree.getChecked('demoId1');
                     console.log(checkedData);
-                }
-                ,setChecked: function(){
-                    tree.setChecked('demoId1', [12, 16]); //勾选指定节点
-                }
-                ,reload: function(){
-                    //重载实例
-                    tree.reload('demoId1', {
-
-                    });
-
-                }
+                    //layer.alert(checkedData[0].children[0].title);
+                    if(checkedData[0] == null){
+                        layer.alert("请先勾选需要筛选插入的数据");
+                    }else if(checkedData[1] != null) {
+                        layer.alert("一次只支持一张表的数据操作");
+                    }else {
+                        $.cookie("checkedData",JSON.stringify(checkedData));
+                        screen()
+                        }
+                    }
             });
             /* var token = $.cookie("token");
         $.ajax({

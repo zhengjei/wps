@@ -1,5 +1,4 @@
 function apiJson() {
-    
    result="";
     $.ajax({
         async:false,

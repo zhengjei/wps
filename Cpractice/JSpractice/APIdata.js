@@ -110,7 +110,7 @@ function gzkj() {
     c.set("出库数据",a);
     c.set("入库数据",a);
 
-     var c=Col_Name_Way();
+     //var c=Col_Name_Way();
 
 
 //console.log(c);  // c  代表 表——》列  ；Map 形式
@@ -130,7 +130,7 @@ function gzkj() {
 
         for (let B_id_b in B_Id){
             if (test.get(B_id_b) == biao){
-                children1.set("B_Id",B_id_b);
+                children1.set("id",B_id_b);
             }
         }
 
@@ -143,6 +143,7 @@ function gzkj() {
 
             var child2=new Map();
             child2.set("title",ta1[i]);
+            child2.set("id",ta1[i]); ////////////////////////////////  加 idd
             child2.set("children","");
             var child22=zhuanhuan(child2);
 
@@ -159,14 +160,15 @@ function gzkj() {
 //console.log(child1);
 
     var kz=new Map();
-    kz.set("title","工作空间");
+/*    kz.set("title","工作空间");
+    kz.set("id","1");   //////////////////////////////////////  加 idd*/
     //kz.set("as","测试");
     kz.set("children",child1);
 
     var kz2=zhuanhuan(kz);
 
     //console.log(kz2);
-    return kz2;
+    return child1;
 }
 
 //var sad=JSON.stringify(gzkj());

@@ -8,7 +8,8 @@
                     <button id="btnShowTaskPane" label="工作空间1.0" onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
                     <button id="btnShowTaskPane2" label="工作空间2.0" onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
                     <button id="clear" label="清空所填内容"  onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
-                    <button id="table" label="预览" onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
+                    <!--<button id="table" label="预览" onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>-->
+                    <button id="table" label="筛选" onAction="OnAction" getEnabled="OnGetEnabled"  getImage="GetImage" getVisible="OnGetVisible" size="large"/>
                 </group>
             </tab>
         </tabs>
