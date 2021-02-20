@@ -46,12 +46,12 @@ function OnAction(control) {
             }
         case "table":
 
-            wps.ShowDialog(GetUrlPath() + "/ui/table.html", "这是一个对话框网页", 900 * window.devicePixelRatio, 600 * window.devicePixelRatio, false)
+            wps.ShowDialog(GetUrlPath() + "/ui/table.html", "筛选", 900 * window.devicePixelRatio, 600 * window.devicePixelRatio, false)
 
             break;
 
         case "btnShowDialog":
-            wps.ShowDialog(GetUrlPath() + "/ui/login.html", "这是一个登录框网页", 900 * window.devicePixelRatio, 600 * window.devicePixelRatio, false)
+            wps.ShowDialog(GetUrlPath() + "/ui/login.html", "欢迎登录", 900 * window.devicePixelRatio, 600 * window.devicePixelRatio, false)
 
             break;
 
@@ -91,10 +91,10 @@ function OnAction(control) {
                 let tskpane2 = wps.CreateTaskPane(GetUrlPath() + "/ui/taskpane.html")
                 let id2 = tskpane2.ID
                 wps.PluginStorage.setItem("taskpane_id2", id2)
-                tskpane.Visible = true
+                tskpane2.Visible = true
             } else {
                 let tskpane2 = wps.GetTaskPane(tsId2)
-                tskpane2.Visible = !tskpane2.Visible
+                tskpane2.Visible = false
             }
         }
             break
@@ -259,7 +259,7 @@ function LoginSuccess() {
 function station() {
     let tsId3 = wps.PluginStorage.getItem("taskpane_id3")
     if (!tsId3) {
-        let tskpane3 = wps.CreateTaskPane(GetUrlPath() + "/caidan.html")
+        let tskpane3 = wps.CreateTaskPane(GetUrlPath() + "/taskpane.html")
         let id3 = tskpane3.ID
         wps.PluginStorage.setItem("taskpane_id3", id3)
         tskpane3.Visible = true

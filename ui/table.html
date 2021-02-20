@@ -60,7 +60,8 @@
             getCheckData: function(){ //获取选中数据
                 var checkStatus = table.checkStatus('idTest')
                     ,data = checkStatus.data;
-                layer.alert(JSON.stringify(data));
+                layer.alert(JSON.stringify(data.length));
+
             }
             ,getCheckLength: function(){ //获取选中数目
                 var checkStatus = table.checkStatus('idTest')

@@ -1,11 +1,10 @@
-function apiJson() {
+/* function apiJson() {
    result="";
     $.ajax({
         async:false,
         type: "GET",
         url: "https://api.apishop.net/common/joke/getJokesByRandom?apiKey=Xn8TqB9a2294f6a36e4716726bce47baf9df0815204776e&pageSize=20",
         dataType: "json",
-
         success: function(data) {
             var list = "";
             result = data.result;
@@ -19,8 +18,8 @@ function apiJson() {
                 document.getElementById('ol').innerHTML = list;
         }
     });
-   
-}
+} */
+
 function f(key) {
     console.log(key)
     var arr = Object.keys(result);
@@ -34,6 +33,7 @@ function f(key) {
             for (let j = 1; j <= arr.length; j++) {
                 curSheet.Cells.Item(1 + j, i).Formula = result[j - 1][key]
             }
+            alert(i,j)
             // curSheet.Cells.Item(1, 1).Formula="Hello, wps加载项!" + curSheet.Cells.Item(1, 1).Formula
 
     }
